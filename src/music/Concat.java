@@ -6,34 +6,38 @@ package music;
 public class Concat implements Music {
     private final Music first;
     private final Music second;
+
     // Rep invariant: m1, m2 != null
-    
+
     private void checkRep() {
     }
-    
+
     /**
      * Make a Music sequence that plays m1 followed by m2.
-     * @param m1 music to play first
-     * @param m2 music to play second
+     * 
+     * @param m1
+     *            music to play first
+     * @param m2
+     *            music to play second
      */
     public Concat(Music m1, Music m2) {
         this.first = m1;
         this.second = m2;
         checkRep();
     }
-    
+
     /**
      * @return first piece in this concatenation
      */
     public Music first() {
         return first;
     }
-    
+
     /**
      * @return duration of this concatenation
      */
     public double duration() {
-        return first.duration();
+        return first.duration() + second.duration();
     }
 
     @Override
